@@ -25,7 +25,7 @@ class Tags(StatesGroup):
     answer_tag_user_2 = State()
 
 
-bot = Bot('5302483007:AAEiZojd-OQ3kx_smKhyAPeL7C39EoRlmm4')
+bot = Bot('')
 storage = MemoryStorage()
 dp = Dispatcher(bot, storage=storage)
 
