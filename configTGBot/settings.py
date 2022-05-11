@@ -1,7 +1,7 @@
 BOT_TOKEN = 'BAD_TOKEN'
 
 try:
-    from config_local import *
+    from configTGBot.config_local import *
 
 except:
     pass

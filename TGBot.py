@@ -1,0 +1,27 @@
+from aiogram.utils import executor
+
+from configTGBot.TGBotsettings import dp
+from Handlers.Start import StartTGBot
+from Handlers.alcohol import alcoholFind, alcoholFindContinue
+from Handlers.NonAlcohol import NonAlcoholFind, NonAlcoholFindContinue
+from Handlers.RandomCocktail import CocktailRandom
+from Handlers.NameCocktail import InputNameCocktail, SearchCocktailForName
+from Handlers.TagsCocktail import InputTagsCocktail, FindCocktailForTags, ContinueFindForTags
+from Handlers.HelpCommand import HelpCommands
+
+
+StartTGBot.register_handler_start(dp)
+alcoholFind.register_handler_alcohol_find(dp)
+alcoholFindContinue.register_handler_alcohol_find_continue(dp)
+NonAlcoholFind.register_handler_nonalcohol_find(dp)
+NonAlcoholFindContinue.register_handler_nonalcohol_find_continue(dp)
+CocktailRandom.register_handler_random_cocktail(dp)
+InputNameCocktail.register_handler_input_name(dp)
+SearchCocktailForName.register_handler_search_name_cocktail(dp)
+InputTagsCocktail.register_handler_input_tags(dp)
+FindCocktailForTags.register_handler_find_for_tags(dp)
+ContinueFindForTags.register_handler_continue_find_for_tags(dp)
+HelpCommands.register_handler_help(dp)
+
+
+executor.start_polling(dp, skip_updates=True)

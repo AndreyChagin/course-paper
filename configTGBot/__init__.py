@@ -1,0 +1,1 @@
+from configTGBot import settings
