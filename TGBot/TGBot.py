@@ -1,7 +1,7 @@
 from aiogram.utils import executor
 
-from configTGBot.TGBotsettings import TGBotConfig
-from Handlers import StartTG, AlcoholAnswer, MesAlcohol, SearchNonalcohol, ContinueFind, SearchRandomCocktail, \
+from TGBot.ConfigTGBot.TGBotsettings import TGBotConfig
+from .Handlers import StartTG, AlcoholAnswer, MesAlcohol, SearchNonalcohol, ContinueFind, SearchRandomCocktail, \
     NameInput, SearchCocktail, InputTags, FindForTags,  ContinueFindForTg, HelpBot
 
 class TGBOt:

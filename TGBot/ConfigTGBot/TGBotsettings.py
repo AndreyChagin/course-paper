@@ -1,7 +1,7 @@
 from aiogram import Bot, Dispatcher
 from aiogram.contrib.fsm_storage.memory import MemoryStorage
 
-from configTGBot import settings
+from TGBot.ConfigTGBot import settings
 
 class TGBotConfig:
     bot = Bot(token=str(settings.BOT_TOKEN))

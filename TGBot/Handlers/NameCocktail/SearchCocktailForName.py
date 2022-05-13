@@ -1,14 +1,14 @@
 from aiogram import types, Dispatcher
 from aiogram.dispatcher import FSMContext
 
-import cocktail
-from State.Name import Name
+import Cocktail
+from TGBot.State.Name import Name
 
 
 class SearchCocktail:
     @staticmethod
     async def name_find(message: types.Message, state: FSMContext):
-        for item in cocktail.cocktail_list.data:
+        for item in Cocktail.cocktail_list.data:
             if message.text.lower().replace('ё', 'е') in item['Name'].lower():
                 output_string_manual = "\n".join(
                     [str(key) + ". " + str(value) for key, value in item["Manual"].items()])

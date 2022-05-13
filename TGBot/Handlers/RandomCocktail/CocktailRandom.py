@@ -4,7 +4,7 @@ import random
 from aiogram import types, Dispatcher
 from aiogram.dispatcher.filters import Text
 
-import cocktail
+from Cocktail import cocktail_list
 
 
 class SearchRandomCocktail:
@@ -15,10 +15,10 @@ class SearchRandomCocktail:
 
         count = random.randint(0, 949)
         output_string_manual = "\n".join(
-            [str(key) + ". " + str(value) for key, value in cocktail.cocktail_list.data[count]["Manual"].items()])
-        await message.answer(f'<u><b>{cocktail.cocktail_list.data[count]["Name"].upper().strip()}</b></u>\n\n'
-                             f'<i>Ингредиенты:</i>\n{cocktail.cocktail_list.data[count]["Ingredients"]}\n\n'
-                             f'<i>Инструменты:</i>\n{cocktail.cocktail_list.data[count]["Tools"]}\n\n'
+            [str(key) + ". " + str(value) for key, value in cocktail_list.data[count]["Manual"].items()])
+        await message.answer(f'<u><b>{cocktail_list.data[count]["Name"].upper().strip()}</b></u>\n\n'
+                             f'<i>Ингредиенты:</i>\n{cocktail_list.data[count]["Ingredients"]}\n\n'
+                             f'<i>Инструменты:</i>\n{cocktail_list.data[count]["Tools"]}\n\n'
                              f'<i>Рецепт:</i>\n{output_string_manual}', parse_mode='html')
 
     @staticmethod

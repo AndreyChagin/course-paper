@@ -1,7 +1,7 @@
 from aiogram import types, Dispatcher
 from aiogram.dispatcher.filters import Text
 
-from State.Name import Name
+from TGBot.State.Name import Name
 
 
 class NameInput:

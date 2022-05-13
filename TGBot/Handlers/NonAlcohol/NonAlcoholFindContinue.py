@@ -1,8 +1,8 @@
 from aiogram import types, Dispatcher
 from aiogram.dispatcher import FSMContext
 
-import cocktail
-from State.Answer2 import Answer2
+from Cocktail import cocktail_list
+from TGBot.State.Answer2 import Answer2
 
 
 class ContinueFind:
@@ -14,13 +14,13 @@ class ContinueFind:
         elif message.text.lower() == "да":
 
             count = 0
-            for x in cocktail.cocktail_list.get_random_cocktail_list():
-                if 'безалкогольные' in cocktail.cocktail_list.data[x]['Tags']:
+            for x in cocktail_list.get_random_cocktail_list():
+                if 'безалкогольные' in cocktail_list.data[x]['Tags']:
                     output_string_manual = "\n".join(
-                        [str(key) + ". " + str(value) for key, value in cocktail.cocktail_list.data[x]["Manual"].items()])
-                    await message.answer(f'<u><b>{cocktail.cocktail_list.data[x]["Name"].upper().strip()}</b></u>\n\n'
-                                         f'<i>Ингредиенты:</i>\n{cocktail.cocktail_list.data[x]["Ingredients"]}\n\n'
-                                         f'<i>Инструменты:</i>\n{cocktail.cocktail_list.data[x]["Tools"]}\n\n'
+                        [str(key) + ". " + str(value) for key, value in cocktail_list.data[x]["Manual"].items()])
+                    await message.answer(f'<u><b>{cocktail_list.data[x]["Name"].upper().strip()}</b></u>\n\n'
+                                         f'<i>Ингредиенты:</i>\n{cocktail_list.data[x]["Ingredients"]}\n\n'
+                                         f'<i>Инструменты:</i>\n{cocktail_list.data[x]["Tools"]}\n\n'
                                          f'<i>Рецепт:</i>\n{output_string_manual}', parse_mode='html')
                     count += 1
                 if count == 3:
