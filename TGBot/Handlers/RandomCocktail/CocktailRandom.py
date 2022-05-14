@@ -4,7 +4,7 @@ import random
 from aiogram import types, Dispatcher
 from aiogram.dispatcher.filters import Text
 
-from Cocktail import cocktail_list
+from Cocktail import cocktail_list, OutputManual
 
 
 class SearchRandomCocktail:
@@ -14,12 +14,12 @@ class SearchRandomCocktail:
         await asyncio.sleep(2)
 
         count = random.randint(0, 949)
-        output_manual = "\n".join(
-            [str(key) + ". " + str(value) for key, value in cocktail_list.data[count]["Manual"].items()])
         await message.answer(f'<u><b>{cocktail_list.data[count]["Name"].upper().strip()}</b></u>\n\n'
                              f'<i>Ингредиенты:</i>\n{cocktail_list.data[count]["Ingredients"]}\n\n'
                              f'<i>Инструменты:</i>\n{cocktail_list.data[count]["Tools"]}\n\n'
-                             f'<i>Рецепт:</i>\n{output_manual}', parse_mode='html')
+                             f'<i>Рецепт:</i>\n'
+                             f'{OutputManual(cocktail_list.data[count]["Manual"]).output_manual}',
+                             parse_mode='html')
 
     @staticmethod
     def register_handler_random_cocktail(dp: Dispatcher):
