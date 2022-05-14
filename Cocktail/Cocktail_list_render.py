@@ -5,9 +5,3 @@ class CocktailRenderList:
         result = [' / '.join(item) for item in result]
         result = '\n'.join(result)
         return result
-
-
-
-
-
-

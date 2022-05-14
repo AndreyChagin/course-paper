@@ -18,7 +18,7 @@ class SearchCocktail:
                                      f'<i>Рецепт:</i>\n{output_manual}', parse_mode='html')
                 break
         else:
-            await message.answer('Я такого коктейля не знаю ¯\_(ツ)_/¯')
+            await message.answer('Я такого коктейля не знаю!!!')
         await state.finish()
 
     @staticmethod
