@@ -14,12 +14,12 @@ class SearchRandomCocktail:
         await asyncio.sleep(2)
 
         count = random.randint(0, 949)
-        output_string_manual = "\n".join(
+        output_manual = "\n".join(
             [str(key) + ". " + str(value) for key, value in cocktail_list.data[count]["Manual"].items()])
         await message.answer(f'<u><b>{cocktail_list.data[count]["Name"].upper().strip()}</b></u>\n\n'
                              f'<i>Ингредиенты:</i>\n{cocktail_list.data[count]["Ingredients"]}\n\n'
                              f'<i>Инструменты:</i>\n{cocktail_list.data[count]["Tools"]}\n\n'
-                             f'<i>Рецепт:</i>\n{output_string_manual}', parse_mode='html')
+                             f'<i>Рецепт:</i>\n{output_manual}', parse_mode='html')
 
     @staticmethod
     def register_handler_random_cocktail(dp: Dispatcher):
