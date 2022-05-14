@@ -33,4 +33,4 @@ class MesAlcohol:
 
     @staticmethod
     def register_handler_alcohol_find(dp: Dispatcher):
-        dp.register_message_handler(MesAlcohol.mes, Text(equals='Алкогольные'), state=None)
+        dp.register_message_handler(MesAlcohol.mes, Text(equals='Алкогольные'))

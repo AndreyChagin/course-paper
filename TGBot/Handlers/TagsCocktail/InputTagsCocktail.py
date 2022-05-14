@@ -22,4 +22,4 @@ class InputTags:
 
     @staticmethod
     def register_handler_input_tags(dp: Dispatcher):
-        dp.register_message_handler(InputTags.tags_input, Text(equals='По тегу'), state=None)
+        dp.register_message_handler(InputTags.tags_input, Text(equals='По тегу'))

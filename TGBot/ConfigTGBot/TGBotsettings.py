@@ -3,6 +3,7 @@ from aiogram.contrib.fsm_storage.memory import MemoryStorage
 
 from TGBot.ConfigTGBot import settings
 
+
 class TGBotConfig:
     bot = Bot(token=str(settings.BOT_TOKEN))
     storage = MemoryStorage()

@@ -12,4 +12,4 @@ class NameInput:
 
     @staticmethod
     def register_handler_input_name(dp: Dispatcher):
-        dp.register_message_handler(NameInput.name, Text(equals='По наименованию'), state=None)
+        dp.register_message_handler(NameInput.name, Text(equals='По наименованию'))

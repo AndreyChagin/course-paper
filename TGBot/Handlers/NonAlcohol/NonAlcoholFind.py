@@ -32,4 +32,4 @@ class SearchNonalcohol:
 
     @staticmethod
     def register_handler_nonalcohol_find(dp: Dispatcher):
-        dp.register_message_handler(SearchNonalcohol.mes, Text(equals='Безалкогольные'), state=None)
+        dp.register_message_handler(SearchNonalcohol.mes, Text(equals='Безалкогольные'))
