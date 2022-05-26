@@ -8,18 +8,10 @@ from TGBot.State.Answer import Answer
 class AlcoholAnswer:
     @staticmethod
     async def no_yes(message: types.Message, state: FSMContext):
-        item = message.text
-        await state.update_data(
-            {
-                'answer': item
-            }
-        )
-        rez = await state.get_data()
-        rez_out = str(rez.get('answer'))
-        if rez_out.lower() == "нет":
+        if message.text.lower() == "нет":
             await message.answer(f'Спасибо что зашли ко мне, приятного вечера, {message.from_user.first_name}')
             await state.finish()
-        elif rez_out.lower() == 'да':
+        elif message.text.lower() == 'да':
 
             count = 0
 
