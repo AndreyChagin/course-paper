@@ -8,8 +8,9 @@ from TGBot.State.Name import Name
 class SearchCocktail:
     @staticmethod
     async def name_find(message: types.Message, state: FSMContext):
+        msg = message.text.lower().replace('ё', 'е')
         for item in cocktail_list.data:
-            if message.text.lower().replace('ё', 'е') in item['Name'].lower():
+            if msg in item['Name'].lower():
                 await message.answer(f'<u><b>{item["Name"].upper().strip()}</b></u>\n\n'
                                      f'<i>Ингредиенты:</i>\n{item["Ingredients"]}\n\n'
                                      f'<i>Инструменты:</i>\n{item["Tools"]}\n\n'

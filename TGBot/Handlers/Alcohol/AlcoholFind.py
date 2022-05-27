@@ -10,23 +10,23 @@ from TGBot.State.Answer import Answer
 class MesAlcohol:
     @staticmethod
     async def mes(message: types.Message):
-        await message.answer(f'Ожидайте, {message.from_user.first_name}')
-        await asyncio.sleep(2)
 
         count = 0
+        max_cocktail = 3
+        data = cocktail_list.data
 
         for x in cocktail_list.get_random_cocktail_list():
-            if message.text.lower() not in cocktail_list.data[x]['Tags']:
-                await message.answer(f'<u><b>{cocktail_list.data[x]["Name"].upper().strip()}</b></u>\n\n'
-                                     f'<i>Ингредиенты:</i>\n{cocktail_list.data[x]["Ingredients"]}\n\n'
-                                     f'<i>Инструменты:</i>\n{cocktail_list.data[x]["Tools"]}\n\n'
+            if message.text.lower() not in data[x]['Tags']:
+                await message.answer(f'<u><b>{data[x]["Name"].upper().strip()}</b></u>\n\n'
+                                     f'<i>Ингредиенты:</i>\n{data[x]["Ingredients"]}\n\n'
+                                     f'<i>Инструменты:</i>\n{data[x]["Tools"]}\n\n'
                                      f'<i>Рецепт:</i>\n'
-                                     f'{OutputManual(cocktail_list.data[x]["Manual"]).output_manual}',
+                                     f'{OutputManual(data[x]["Manual"]).output_manual}',
                                      parse_mode='html')
                 count += 1
-            if count == 3:
+            if count == max_cocktail:
                 break
-        if count < 3:
+        if count < max_cocktail:
             await message.answer('Конец, попробуйте заново')
         await message.answer('Еще хотите? (да/нет)')
         await Answer.answer.set()

@@ -14,21 +14,22 @@ class AlcoholAnswer:
         elif message.text.lower() == 'да':
 
             count = 0
+            max_cocktail = 3
+            data = cocktail_list.data
 
             for x in cocktail_list.get_random_cocktail_list():
-                if 'безалкогольные' not in cocktail_list.data[x]['Tags']:
-                    await message.answer(f'<u><b>{cocktail_list.data[x]["Name"].upper().strip()}</b></u>\n\n'
-                                         f'<i>Ингредиенты:</i>\n{cocktail_list.data[x]["Ingredients"]}\n\n'
-                                         f'<i>Инструменты:</i>\n{cocktail_list.data[x]["Tools"]}\n\n'
+                if 'безалкогольные' not in data[x]['Tags']:
+                    await message.answer(f'<u><b>{data[x]["Name"].upper().strip()}</b></u>\n\n'
+                                         f'<i>Ингредиенты:</i>\n{data[x]["Ingredients"]}\n\n'
+                                         f'<i>Инструменты:</i>\n{data[x]["Tools"]}\n\n'
                                          f'<i>Рецепт:</i>\n'
-                                         f'{OutputManual(cocktail_list.data[x]["Manual"]).output_manual}',
+                                         f'{OutputManual(data[x]["Manual"]).output_manual}',
                                          parse_mode='html')
                     count += 1
-                if count == 3:
-
+                if count == max_cocktail:
                     await message.answer('Хочешь, хочешь и молчишь?')
                     break
-            if count < 3:
+            if count < max_cocktail:
                 await message.answer('Конец, попробуйте заново')
         else:
             await message.answer('Ты по-моему перепутал')

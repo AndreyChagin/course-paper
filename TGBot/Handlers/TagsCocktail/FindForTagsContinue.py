@@ -12,16 +12,18 @@ class ContinueFindForTg:
         if message.text.lower() == 'да':
 
             count = 0
+            max_cocktail = 3
+            data = cocktail_list.data
             for x in cocktail_list.get_random_cocktail_list():
-                if item_tags.get('answer_tag_user').issubset(cocktail_list.data[x]['Tags'].split(' / ')):
-                    await message.answer(f'<u><b>{cocktail_list.data[x]["Name"].upper().strip()}</b></u>\n\n'
-                                         f'<i>Ингредиенты:</i>\n{cocktail_list.data[x]["Ingredients"]}\n\n'
-                                         f'<i>Инструменты:</i>\n{cocktail_list.data[x]["Tools"]}\n\n'
+                if item_tags.get('answer_tag_user').issubset(data[x]['Tags'].split(' / ')):
+                    await message.answer(f'<u><b>{data[x]["Name"].upper().strip()}</b></u>\n\n'
+                                         f'<i>Ингредиенты:</i>\n{data[x]["Ingredients"]}\n\n'
+                                         f'<i>Инструменты:</i>\n{data[x]["Tools"]}\n\n'
                                          f'<i>Рецепт:</i>'
-                                         f'\n{OutputManual(cocktail_list.data[x]["Manual"]).output_manual}',
+                                         f'\n{OutputManual(data[x]["Manual"]).output_manual}',
                                          parse_mode='html')
                     count += 1
-                if count == 3:
+                if count == max_cocktail:
                     await message.answer('Еще или хватит?(да/нет)')
                     break
         elif message.text.lower() == 'нет':

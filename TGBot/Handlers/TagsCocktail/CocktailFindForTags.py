@@ -16,23 +16,25 @@ class FindForTags:
         )
 
         count = 0
+        max_cocktail = 4
+        data = cocktail_list.data
         for x in cocktail_list.get_random_cocktail_list():
-            if set(message.text.lower().split(', ')).issubset(cocktail_list.data[x]['Tags'].split(' / ')):
-                await message.answer(f'<u><b>{cocktail_list.data[x]["Name"].upper().strip()}</b></u>\n\n'
-                                     f'<i>Ингредиенты:</i>\n{cocktail_list.data[x]["Ingredients"]}\n\n'
-                                     f'<i>Инструменты:</i>\n{cocktail_list.data[x]["Tools"]}\n\n'
+            if set(message.text.lower().split(', ')).issubset(data[x]['Tags'].split(' / ')):
+                await message.answer(f'<u><b>{data[x]["Name"].upper().strip()}</b></u>\n\n'
+                                     f'<i>Ингредиенты:</i>\n{data[x]["Ingredients"]}\n\n'
+                                     f'<i>Инструменты:</i>\n{data[x]["Tools"]}\n\n'
                                      f'<i>Рецепт:</i>'
-                                     f'\n{OutputManual(cocktail_list.data[x]["Manual"]).output_manual}',
+                                     f'\n{OutputManual(data[x]["Manual"]).output_manual}',
                                      parse_mode='html')
                 count += 1
-                if count == 4:
+                if count ==  max_cocktail:
                     await message.answer('Продолжаем?(да/нет)')
                     await Tags.next()
                     break
         if count == 0:
             await message.answer('Такого тега нет!!!\nВы вышли из категории <i>По тегу</i>', parse_mode='html')
             await state.finish()
-        elif count < 4:
+        elif count <  max_cocktail:
             await message.answer('Это все коктейли по данному тегу!!!')
             await state.finish()
 
