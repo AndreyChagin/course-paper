@@ -16,8 +16,7 @@ class SearchRandomCocktail:
                              f'<i>Ингредиенты:</i>\n{data[count]["Ingredients"]}\n\n'
                              f'<i>Инструменты:</i>\n{data[count]["Tools"]}\n\n'
                              f'<i>Рецепт:</i>\n'
-                             f'{OutputManual(data[count]["Manual"]).output_manual}'
-                             f'\n{id(data)}',
+                             f'{OutputManual(data[count]["Manual"]).output_manual}',
                              parse_mode='html')
 
     @staticmethod

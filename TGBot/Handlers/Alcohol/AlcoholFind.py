@@ -19,8 +19,7 @@ class MesAlcohol:
                                      f'<i>Ингредиенты:</i>\n{data[x]["Ingredients"]}\n\n'
                                      f'<i>Инструменты:</i>\n{data[x]["Tools"]}\n\n'
                                      f'<i>Рецепт:</i>\n'
-                                     f'{OutputManual(data[x]["Manual"]).output_manual}'
-                                     f'\n{id(data)}',
+                                     f'{OutputManual(data[x]["Manual"]).output_manual}',
                                      parse_mode='html')
                 count += 1
             if count == max_cocktail:
