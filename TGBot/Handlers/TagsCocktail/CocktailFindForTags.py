@@ -1,7 +1,7 @@
 from aiogram import types, Dispatcher
 from aiogram.dispatcher import FSMContext
 
-from Cocktail import cocktail_list, OutputManual
+from Cocktail import data, get_index_cocktail, OutputManual
 from TGBot.State.Tags import Tags
 
 
@@ -17,8 +17,7 @@ class FindForTags:
 
         count = 0
         max_cocktail = 4
-        data = cocktail_list.data
-        for x in cocktail_list.get_random_cocktail_list():
+        for x in get_index_cocktail():
             if set(message.text.lower().split(', ')).issubset(data[x]['Tags'].split(' / ')):
                 await message.answer(f'<u><b>{data[x]["Name"].upper().strip()}</b></u>\n\n'
                                      f'<i>Ингредиенты:</i>\n{data[x]["Ingredients"]}\n\n'
@@ -34,7 +33,7 @@ class FindForTags:
         if count == 0:
             await message.answer('Такого тега нет!!!\nВы вышли из категории <i>По тегу</i>', parse_mode='html')
             await state.finish()
-        elif count <  max_cocktail:
+        elif count < max_cocktail:
             await message.answer('Это все коктейли по данному тегу!!!')
             await state.finish()
 

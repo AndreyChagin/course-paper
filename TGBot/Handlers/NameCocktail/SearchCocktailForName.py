@@ -1,7 +1,7 @@
 from aiogram import types, Dispatcher
 from aiogram.dispatcher import FSMContext
 
-from Cocktail import cocktail_list, OutputManual
+from Cocktail import data, OutputManual
 from TGBot.State.Name import Name
 
 
@@ -9,7 +9,7 @@ class SearchCocktail:
     @staticmethod
     async def name_find(message: types.Message, state: FSMContext):
         msg = message.text.lower().replace('ё', 'е')
-        for item in cocktail_list.data:
+        for item in data:
             if msg in item['Name'].lower():
                 await message.answer(f'<u><b>{item["Name"].upper().strip()}</b></u>\n\n'
                                      f'<i>Ингредиенты:</i>\n{item["Ingredients"]}\n\n'

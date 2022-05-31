@@ -3,7 +3,7 @@ import random
 from aiogram import types, Dispatcher
 from aiogram.dispatcher.filters import Text
 
-from Cocktail import cocktail_list, OutputManual
+from Cocktail import OutputManual, data
 
 
 class SearchRandomCocktail:
@@ -11,12 +11,13 @@ class SearchRandomCocktail:
     async def mes(message: types.Message):
 
         count = random.randint(0, 949)
-        data = cocktail_list.data
+
         await message.answer(f'<u><b>{data[count]["Name"].upper().strip()}</b></u>\n\n'
                              f'<i>Ингредиенты:</i>\n{data[count]["Ingredients"]}\n\n'
                              f'<i>Инструменты:</i>\n{data[count]["Tools"]}\n\n'
                              f'<i>Рецепт:</i>\n'
-                             f'{OutputManual(data[count]["Manual"]).output_manual}',
+                             f'{OutputManual(data[count]["Manual"]).output_manual}'
+                             f'\n{id(data)}',
                              parse_mode='html')
 
     @staticmethod

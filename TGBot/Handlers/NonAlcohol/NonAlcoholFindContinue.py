@@ -1,7 +1,7 @@
 from aiogram import types, Dispatcher
 from aiogram.dispatcher import FSMContext
 
-from Cocktail import cocktail_list, OutputManual
+from Cocktail import cocktail_list, OutputManual, data
 from TGBot.State.Answer2 import Answer2
 
 
@@ -15,7 +15,6 @@ class ContinueFind:
 
             count = 0
             max_cocktail = 3
-            data = cocktail_list.data
             for x in cocktail_list.get_random_cocktail_list():
                 if 'безалкогольные' in data[x]['Tags']:
                     await message.answer(f'<u><b>{data[x]["Name"].upper().strip()}</b></u>\n\n'

@@ -1,7 +1,7 @@
 from aiogram import types, Dispatcher
 from aiogram.dispatcher.filters import Text
 
-from Cocktail import cocktail_list, OutputManual
+from Cocktail import data, get_index_cocktail, OutputManual
 from TGBot.State.Answer2 import Answer2
 
 
@@ -11,8 +11,8 @@ class SearchNonalcohol:
 
         count = 0
         max_cocktail = 3
-        data = cocktail_list.data
-        for x in cocktail_list.get_random_cocktail_list():
+
+        for x in get_index_cocktail():
             if message.text.lower() in data[x]['Tags'] and message.text.lower() == 'безалкогольные':
                 await message.answer(f'<u><b>{data[x]["Name"].upper().strip()}</b></u>\n\n'
                                      f'<i>Ингредиенты:</i>\n{data[x]["Ingredients"]}\n\n'

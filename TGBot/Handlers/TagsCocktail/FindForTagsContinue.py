@@ -1,7 +1,7 @@
 from aiogram import types, Dispatcher
 from aiogram.dispatcher import FSMContext
 
-from Cocktail import cocktail_list, OutputManual
+from Cocktail import data, get_index_cocktail, OutputManual
 from TGBot.State.Tags import Tags
 
 
@@ -13,8 +13,8 @@ class ContinueFindForTg:
 
             count = 0
             max_cocktail = 3
-            data = cocktail_list.data
-            for x in cocktail_list.get_random_cocktail_list():
+
+            for x in get_index_cocktail():
                 if item_tags.get('answer_tag_user').issubset(data[x]['Tags'].split(' / ')):
                     await message.answer(f'<u><b>{data[x]["Name"].upper().strip()}</b></u>\n\n'
                                          f'<i>Ингредиенты:</i>\n{data[x]["Ingredients"]}\n\n'
