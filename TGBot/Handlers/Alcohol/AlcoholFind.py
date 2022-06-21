@@ -14,7 +14,7 @@ class MesAlcohol:
         max_cocktail = 3
 
         for x in get_index_cocktail():
-            if message.text.lower() not in data[x]['Tags']:
+            if 'безалкогольные' not in data[x]['Tags']:
                 await message.answer(f'<u><b>{data[x]["Name"].upper().strip()}</b></u>\n\n'
                                      f'<i>Ингредиенты:</i>\n{data[x]["Ingredients"]}\n\n'
                                      f'<i>Инструменты:</i>\n{data[x]["Tools"]}\n\n'
