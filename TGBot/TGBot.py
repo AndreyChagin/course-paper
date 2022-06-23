@@ -5,7 +5,7 @@ from .Handlers import *
 
 
 class TGBOt:
-
+    """ Запуск всех хендлеров и самого бота"""
     StartTG.register_handler_start(TGBotConfig.dp)
     MesAlcohol.register_handler_alcohol_find(TGBotConfig.dp)
     AlcoholAnswer.register_handler_alcohol_find_continue(TGBotConfig.dp)

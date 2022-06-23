@@ -7,9 +7,10 @@ from Cocktail import OutputManual, data
 
 
 class SearchRandomCocktail:
+    """ Класс отвечающий за поиск коктейлей по наименованию """
     @staticmethod
     async def mes(message: types.Message):
-
+        """ Хендлер поиска коктейля по наименованию """
         count = random.randint(0, 949)
 
         await message.answer(f'<u><b>{data[count]["Name"].upper().strip()}</b></u>\n\n'
@@ -21,4 +22,5 @@ class SearchRandomCocktail:
 
     @staticmethod
     def register_handler_random_cocktail(dp: Dispatcher):
+        """ Функция регистрации хендлера """
         dp.register_message_handler(SearchRandomCocktail.mes, Text(equals='Рандомный напиток'))

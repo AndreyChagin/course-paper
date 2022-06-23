@@ -6,8 +6,10 @@ from TGBot.State.Answer2 import Answer2
 
 
 class ContinueFind:
+    """ Класс отвечающий за продолжение поиска безалкогольных коктейлей """
     @staticmethod
     async def no_yes(message: types.Message, state: FSMContext):
+        """ Хендлер отвечающий за продолжение поиска безалкогольных коктейлей """
         if message.text.lower() == "нет":
             await message.answer(f'Спасибо что зашли к нам, приятного вечера, {message.from_user.first_name}')
             await state.finish()
@@ -34,4 +36,5 @@ class ContinueFind:
 
     @staticmethod
     def register_handler_nonalcohol_find_continue(dp: Dispatcher):
+        """ Функция регистрации хендлера """
         dp.register_message_handler(ContinueFind.no_yes, state=Answer2.answer2)

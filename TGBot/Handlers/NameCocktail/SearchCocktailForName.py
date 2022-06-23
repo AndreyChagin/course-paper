@@ -6,8 +6,10 @@ from TGBot.State.Name import Name
 
 
 class SearchCocktail:
+    """ Класс отвечающий за поиск коктейля по наименованию """
     @staticmethod
     async def name_find(message: types.Message, state: FSMContext):
+        """ Хендлер поиска коктейля по наименованию """
         msg = message.text.lower().replace('ё', 'е')
         for item in data:
             if msg in item['Name'].lower():
@@ -24,4 +26,5 @@ class SearchCocktail:
 
     @staticmethod
     def register_handler_search_name_cocktail(dp: Dispatcher):
+        """ Функция регистрации хендлера """
         dp.register_message_handler(SearchCocktail.name_find, state=Name.answer_name)

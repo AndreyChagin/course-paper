@@ -6,9 +6,10 @@ from TGBot.State.Answer2 import Answer2
 
 
 class SearchNonalcohol:
+    """ Класс отвечающий за поиск безалкогольных коктейлей """
     @staticmethod
     async def mes(message: types.Message):
-
+        """ Хендлер поиска безалкогольных коктейлей """
         count = 0
         max_cocktail = 3
 
@@ -30,4 +31,5 @@ class SearchNonalcohol:
 
     @staticmethod
     def register_handler_nonalcohol_find(dp: Dispatcher):
+        """ Функция регистрации хендлера """
         dp.register_message_handler(SearchNonalcohol.mes, Text(equals='Безалкогольные'))

@@ -6,8 +6,10 @@ from TGBot.State.Tags import Tags
 
 
 class FindForTags:
+    """ Класс поиска коктейлей по введенным тегам """
     @staticmethod
     async def tags_find(message: types.Message, state: FSMContext):
+        """ Хендлер поиска коктейлей """
         item = set(message.text.lower().split(', '))
         await state.update_data(
             {
@@ -39,4 +41,5 @@ class FindForTags:
 
     @staticmethod
     def register_handler_find_for_tags(dp: Dispatcher):
+        """ Функция регистрации хендлера """
         dp.register_message_handler(FindForTags.tags_find, state=Tags.answer_tag_user)

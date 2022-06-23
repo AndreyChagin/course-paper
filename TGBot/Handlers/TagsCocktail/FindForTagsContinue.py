@@ -6,8 +6,10 @@ from TGBot.State.Tags import Tags
 
 
 class ContinueFindForTg:
+    """ Класс отвечающий за продолжение поиска коктейлей с веденными тегами """
     @staticmethod
     async def answer_tag_2(message: types.Message, state: FSMContext):
+        """ Хендлер продолжающий поиск """
         item_tags = await state.get_data()
         if message.text.lower() == 'да':
 
@@ -34,4 +36,5 @@ class ContinueFindForTg:
 
     @staticmethod
     def register_handler_continue_find_for_tags(dp: Dispatcher):
+        """ Функция регистрации хендлера """
         dp.register_message_handler(ContinueFindForTg.answer_tag_2, state=Tags.answer_tag_user_2)

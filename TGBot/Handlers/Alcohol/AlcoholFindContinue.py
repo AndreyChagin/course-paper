@@ -6,8 +6,10 @@ from TGBot.State.Answer import Answer
 
 
 class AlcoholAnswer:
+    """ Класс отвечающий за продолжение поиска алкогольных коктейлей """
     @staticmethod
     async def no_yes(message: types.Message, state: FSMContext):
+        """ Хендлер отвечающий за продолжение поиска алкогольных коктейлей """
         if message.text.lower() == "нет":
             await message.answer(f'Спасибо что зашли ко мне, приятного вечера, {message.from_user.first_name}')
             await state.finish()
@@ -35,4 +37,5 @@ class AlcoholAnswer:
 
     @staticmethod
     def register_handler_alcohol_find_continue(dp: Dispatcher):
+        """ Функция регистрации хендлера """
         dp.register_message_handler(AlcoholAnswer.no_yes, state=Answer.answer)
